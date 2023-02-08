@@ -20,7 +20,7 @@ export interface Env {
 }
 
 import { Router } from "itty-router";
-import test from "./routes/test";
+import test from "./routes/Test";
 import index from "./routes";
 
 const router = Router();
