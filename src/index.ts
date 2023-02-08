@@ -20,7 +20,7 @@ export interface Env {
 }
 
 import { Router } from "itty-router";
-import testing from "./routes/testing";
+import test from "./routes/test";
 import index from "./routes";
 
 const router = Router();
@@ -29,7 +29,7 @@ const router = Router();
 router.options("*", () => new Response(undefined, { status: 200 }));
 
 // Routes
-router.get("/", index).all("/testing", testing);
+router.get("/", index).all("/testing", test);
 
 // 404 for everything else
 router.all("*", () => new Response("Not Found.", { status: 404 }));
