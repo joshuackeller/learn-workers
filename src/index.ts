@@ -20,18 +20,16 @@ export interface Env {
 }
 
 import { Router } from "itty-router";
-import Testing from "./routes/Testing";
+import testing from "./routes/testing";
+import index from "./routes";
 
-// now let's create a router (note the lack of "new")
 const router = Router();
 
-// OPTIONS for all routs
-router.options("/*", () => new Response(undefined, { status: 200 }));
+// OPTIONS for all routes
+router.options("*", () => new Response(undefined, { status: 200 }));
 
 // Routes
-router
-  .get("/", () => new Response(JSON.stringify({ hello: "there" })))
-  .all("/testing", Testing);
+router.get("/", index).all("/testing", testing);
 
 // 404 for everything else
 router.all("*", () => new Response("Not Found.", { status: 404 }));

@@ -1,8 +1,8 @@
 import { IRequest } from "itty-router";
-import res from "../../utilities/CustomResponse";
+import res from "../utilities/CustomResponse";
 
 const get = async (request: IRequest) => {
-  return res({ testing: "testing routes" });
+  return res({ hello: "there" });
 };
 
 export default async function (request: IRequest) {
