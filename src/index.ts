@@ -9,7 +9,6 @@
  */
 
 export interface Env {
-  ACCESS_KEY_ID: string;
   // Example binding to KV. Learn more at https://developers.cloudflare.com/workers/runtime-apis/kv/
   // MY_KV_NAMESPACE: KVNamespace;
   //
@@ -24,6 +23,7 @@ import { Router } from "itty-router";
 import testing from "./routes/testing";
 import index from "./routes";
 import organization from "./routes/organization";
+import mongo from "./routes/organization/mongo";
 
 const router = Router();
 
@@ -34,7 +34,8 @@ router.options("*", () => new Response(undefined, { status: 200 }));
 router
   .all("/", index)
   .all("/testing", testing)
-  .all("/organization", organization);
+  .all("/organization", organization)
+  .all("/organization/mongo", mongo);
 
 // 404 for everything else
 router.all("*", () => new Response("Not Found.", { status: 404 }));
